@@ -42,13 +42,48 @@ figure img{width:100%;border:1px solid var(--line);border-radius:8px;display:blo
 .cover .label{color:#9FB3D9}.cover .muted{color:#C7D2E8}
 .cover h1{font-size:clamp(40px,8vw,56px);margin:8px 0}
 .cover .tag{font-size:clamp(18px,3.4vw,22px);font-weight:700;margin-bottom:6px}
+.hero{display:flex;gap:20px;align-items:center}
+.photo{width:120px;flex:none;border-radius:12px;border:2px solid rgba(255,255,255,.3);display:block}
 .chips{list-style:none;padding:0;margin:28px 0;display:grid;gap:10px;max-width:max(62%,320px)} /* 표지 이미지 오른쪽 오브젝트를 피함 */
-.chips li{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:12px 14px}
+.chips li{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:10px}
+.chips a{display:block;padding:12px 14px;text-decoration:none}
 .chips b{font-size:16px}.chips span{display:block;font-size:13px;color:#C7D2E8;word-break:keep-all}
 .timeline{list-style:none;padding:0}
 .timeline li{display:grid;grid-template-columns:64px 1fr;gap:10px;padding:6px 0;border-bottom:1px solid var(--line)}
 .timeline b{color:#1F2937}
-@media (max-width:640px){.grid2,.flow{grid-template-columns:1fr}.banner h2{max-width:100%}}
+@media (max-width:640px){.grid2,.flow{grid-template-columns:1fr}.photo{width:96px}
+  .banner h2{max-width:100%;background:rgba(255,255,255,.8);padding:4px 10px;border-radius:6px}  /* 좁은 화면에선 제목이 그림 위에 겹침 */
+  .cover{background-image:linear-gradient(rgba(15,27,51,.6),rgba(15,27,51,.6)),url(img/ai-cover.png)}}
+
+/* 화면 전환·메뉴 (app.js) — 숨김은 화면에서만. 인쇄는 8쪽 모두 */
+@media screen{
+  html.js .page:not(.on){display:none}
+  .hero{max-width:max(62%,320px)}.cover .tag{word-break:keep-all}  /* 표지 그림 오른쪽 위 오브젝트를 피함 */
+  .site-nav{position:sticky;top:0;z-index:10;display:flex;gap:4px;overflow-x:auto;white-space:nowrap;
+    padding:10px max(16px,calc(50% - 410px));background:rgba(238,240,244,.9);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line)}
+  .site-nav a{flex:none;padding:6px 12px;border-radius:999px;font-size:14px;font-weight:600;text-decoration:none;color:var(--muted)}
+  .site-nav a:first-child{color:var(--ink);font-weight:800;margin-right:auto}
+  .site-nav a[aria-current]{background:var(--ink);color:#fff}
+  .next{margin-top:28px;text-align:right;font-size:15px;font-weight:700}
+  .next a{text-decoration:none;color:var(--accent)}
+  @keyframes fade{from{opacity:0}}
+  @keyframes enter{from{opacity:0;transform:translateY(16px)}}
+  @keyframes grow{from{transform:scaleX(0)}}
+  .page.on{animation:fade .45s ease-out both}
+  .page.on>*{animation:enter .45s ease-out both}
+  .page.on>:nth-child(2){animation-delay:.06s}.page.on>:nth-child(3){animation-delay:.12s}
+  .page.on>:nth-child(4){animation-delay:.18s}.page.on>:nth-child(5){animation-delay:.24s}
+  .page.on>:nth-child(6){animation-delay:.3s}.page.on>:nth-child(7){animation-delay:.36s}
+  .page.on>:nth-child(8){animation-delay:.42s}
+  .page.on .bar{transform-origin:left;animation:grow .8s .2s ease-out both}
+  .chips li{transition:transform .2s,border-color .2s}
+  .chips li:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.45)}
+  @media (prefers-reduced-motion:reduce){
+    .page.on,.page.on>*,.page.on .bar{animation:none}
+    .chips li{transition:none}.chips li:hover{transform:none}
+  }
+}
 
 /* 인쇄: A4 세로, 쪽마다 1섹션. overflow:hidden 금지 — 넘치면 쪽 수로 잡힌다 */
 @media print{
@@ -59,6 +94,8 @@ figure img{width:100%;border:1px solid var(--line);border-radius:8px;display:blo
   .page:last-child{break-after:auto}
   p,li{font-size:9.5pt}.lead{font-size:10.5pt}h1{font-size:26pt}h2{font-size:17pt}h3{font-size:11.5pt}
   .cover h1{font-size:44pt}.cover .tag{font-size:16pt}
+  .photo{width:26mm}
   .overview,.ai,.flow li,.bars,.links{font-size:8.5pt}.cap{font-size:8pt}
   .phone img{max-width:62mm}
+  .site-nav,.next{display:none}
 }
