@@ -45,9 +45,6 @@ figure img{width:100%;border:1px solid var(--line);border-radius:8px;display:blo
 .chips{list-style:none;padding:0;margin:28px 0;display:grid;gap:10px;max-width:max(62%,320px)} /* 표지 이미지 오른쪽 오브젝트를 피함 */
 .chips li{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:12px 14px}
 .chips b{font-size:16px}.chips span{display:block;font-size:13px;color:#C7D2E8;word-break:keep-all}
-.qr{display:flex;gap:16px;align-items:center;background:#fff;color:var(--ink);border-radius:10px;padding:12px;max-width:520px}
-.qr img{width:110px;height:110px}
-.qr div{min-width:0;overflow-wrap:anywhere} /* 긴 URL이 휴대폰 폭을 넘지 않게 */
 .timeline{list-style:none;padding:0}
 .timeline li{display:grid;grid-template-columns:64px 1fr;gap:10px;padding:6px 0;border-bottom:1px solid var(--line)}
 .timeline b{color:#1F2937}
@@ -63,6 +60,5 @@ figure img{width:100%;border:1px solid var(--line);border-radius:8px;display:blo
   p,li{font-size:9.5pt}.lead{font-size:10.5pt}h1{font-size:26pt}h2{font-size:17pt}h3{font-size:11.5pt}
   .cover h1{font-size:44pt}.cover .tag{font-size:16pt}
   .overview,.ai,.flow li,.bars,.links{font-size:8.5pt}.cap{font-size:8pt}
-  .qr img{width:30mm;height:30mm}
   .phone img{max-width:62mm}
 }
