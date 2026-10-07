@@ -42,11 +42,12 @@ figure img{width:100%;border:1px solid var(--line);border-radius:8px;display:blo
 .cover .label{color:#9FB3D9}.cover .muted{color:#C7D2E8}
 .cover h1{font-size:clamp(40px,8vw,56px);margin:8px 0}
 .cover .tag{font-size:clamp(18px,3.4vw,22px);font-weight:700;margin-bottom:6px}
-.chips{list-style:none;padding:0;margin:28px 0;display:grid;gap:10px}
+.chips{list-style:none;padding:0;margin:28px 0;display:grid;gap:10px;max-width:max(62%,320px)} /* 표지 이미지 오른쪽 오브젝트를 피함 */
 .chips li{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:12px 14px}
-.chips b{font-size:16px}.chips span{display:block;font-size:13px;color:#C7D2E8}
+.chips b{font-size:16px}.chips span{display:block;font-size:13px;color:#C7D2E8;word-break:keep-all}
 .qr{display:flex;gap:16px;align-items:center;background:#fff;color:var(--ink);border-radius:10px;padding:12px;max-width:520px}
 .qr img{width:110px;height:110px}
+.qr div{min-width:0;overflow-wrap:anywhere} /* 긴 URL이 휴대폰 폭을 넘지 않게 */
 .timeline{list-style:none;padding:0}
 .timeline li{display:grid;grid-template-columns:64px 1fr;gap:10px;padding:6px 0;border-bottom:1px solid var(--line)}
 .timeline b{color:#1F2937}
