@@ -48,6 +48,7 @@ figure img{width:100%;border:1px solid var(--line);border-radius:8px;display:blo
 .chips li{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:10px}
 .chips a{display:block;padding:12px 14px;text-decoration:none}
 .chips b{font-size:16px}.chips span{display:block;font-size:13px;color:#C7D2E8;word-break:keep-all}
+.qr{display:none}  /* QR은 PDF(인쇄) 전용 — 웹에선 링크 한 줄 */
 .timeline{list-style:none;padding:0}
 .timeline li{display:grid;grid-template-columns:64px 1fr;gap:10px;padding:6px 0;border-bottom:1px solid var(--line)}
 .timeline b{color:#1F2937}
@@ -97,5 +98,8 @@ figure img{width:100%;border:1px solid var(--line);border-radius:8px;display:blo
   .photo{width:26mm}
   .overview,.ai,.flow li,.bars,.links{font-size:8.5pt}.cap{font-size:8pt}
   .phone img{max-width:62mm}
-  .site-nav,.next{display:none}
+  .site-nav,.next,.cover>.links{display:none}
+  .qr{display:flex;gap:16px;align-items:center;width:fit-content;margin-top:6mm;padding:12px 18px 12px 12px;
+    background:#fff;color:var(--ink);border-radius:10px;font-size:9.5pt}
+  .qr img{width:30mm;height:30mm;display:block}
 }
